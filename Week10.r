@@ -59,9 +59,38 @@ bodies=str_sub(emails,start=breaks[,2] )        ## [,2] all rows, second column
 cat(bodies[6])
 
 
+##2.1
+fruit=c("apple","banana","pear","pinapple")
+
+##2.2 - Detect if the pattern is found
+str_detect(fruit,"a")
+# pattern starts with "a"
+str_detect(fruit,"^a")
+# pattern ends with "a"
+str_detect(fruit,"a$")
+# pattern has a or e or i or o or u
+str_detect(fruit,"[aeiou]")
+# pattern has a or b or c or d
+str_detect(fruit,"[a-d]")
+str_detect(fruit,"[0-9]")
 
 
+##2.3
+#pattern starts with "a" and ends with "e" at the same time
+str_detect(fruit,"^a[a-z]*e$") # * Preceding pattern is matched 0 or more times -- after the * after the patterns
+### . could be any character or number
+str_detect(fruit,"^a.*e$")
 
+
+##2.4
+
+phone = "213 740 4826, 213-740-4826, (213) 740 4826"
+str_detect(phone,"[0-9]{3} [0-9]{3} [0-9]{4}")
+str_detect(phone,"[0-9]{3}[ -][0-9]{3}[ -][0-9]{4}") ## [ ] for "or" functions
+str_detect(phone, "[(]?[0-9]{3}[)]?[ -][0-9]{3}[ -][0-9]{4}" )
+
+##2.5
+str_extract_all(bodies,"[(]?[0-9]{3}[)]?[ -][0-9]{3}[ -][0-9]{4}")
 
 
 
